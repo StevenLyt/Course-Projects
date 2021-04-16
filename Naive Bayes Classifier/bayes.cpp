@@ -26,14 +26,14 @@ void Bayes::print()
     }
 }
 
-void Bayes::train(string& s)
+void Bayes::train(string &s)
 {
     stringstream ss(s);
     set<string> attributes;
     string object;
     ss >> object;
     // ignore duplicates
-    while (!ss.eof())
+    while (!ss.fail())
     {
         string attribute;
         ss >> attribute;
@@ -46,7 +46,7 @@ void Bayes::train(string& s)
     class_count_[object]++;
 }
 
-string Bayes::guess(string& s)
+string Bayes::guess(string &s)
 {
     stringstream ss(s);
     double max_chance = 0;
@@ -54,7 +54,7 @@ string Bayes::guess(string& s)
     // all attributes for guessing
     set<string> attributes;
     // ignore duplicates
-    while (!ss.eof())
+    while (!ss.fail())
     {
         string attribute;
         ss >> attribute;
@@ -74,7 +74,7 @@ string Bayes::guess(string& s)
     return max_object;
 }
 
-double Bayes::calculate(string object, set<string>& attributes)
+double Bayes::calculate(string object, set<string> &attributes)
 {
     // P(object | attributes) = P(object & attributes) / P(attributes)
     // P(object & attributes) = P(object) * product(P(attribute | object))
@@ -98,6 +98,5 @@ double Bayes::calculate(string object, set<string>& attributes)
         }
         denominator += t;
     }
-    cout << numerator / denominator;
     return numerator / denominator;
 }
