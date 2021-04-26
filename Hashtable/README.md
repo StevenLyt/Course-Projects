@@ -1,3 +1,5 @@
+# Hashtable
+
 Implementation of a Hashtable<string,int> data structure with probing for collision resolution. Input are converted to strings of lowercase letters, and other characters are ignored.
 
 ## test method
